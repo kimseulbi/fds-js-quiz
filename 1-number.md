@@ -133,12 +133,41 @@ for (let i=0; i<20; i++){
 ### 문제 5
 
 100 이하의 자연수 중 3과 5의 공배수를 모두 출력하는 프로그램을 작성하세요.
+```js
+for (let i=0; i<100; i++){
+  const num = i+1
+  if ((num % 3 === 0 && num % 5 ===0 )){
+     console.log(`${x} :공배수`)
+  }else{
+    console.log(`${x} :공배수가 아님`)
+  }
+}
+```
 
 ### 문제 6
 
 자연수를 입력받아, 그 수의 모든 약수를 출력하는 함수를 작성하세요.
 
-### 문제 7
+```js
+print(12)
+
+// 1: 약수
+// 5: 약수
+```
+```js
+function print(input){
+  for (let i=0; i<input; i++){
+    const num = i + 1
+    if (input % num === 0){
+      console.log(`${num}: 약수`)
+    }else {
+      console.log(`${num}: 아님`)
+    }
+  } 
+}
+```
+
+### 문제 7 (과제)
 
 2 이상의 자연수를 입력받아, 그 수가 소수인지 아닌지를 판별하는 함수를 작성하세요.
 
@@ -146,7 +175,42 @@ for (let i=0; i<20; i++){
 
 1부터 100까지의 수를 차례대로 출력하되, 자릿수에 3, 6, 9중 하나라도 포함되어 있으면 '짝!'을 대신 출력하는 프로그램을 작성하세요.
 
-### 문제 9
+```js
+1
+2
+짝! 
+4
+5
+찍!
+```
+```js
+function print(i){
+  for (let i=0; i<100; i++){
+    const num = i+1;
+    if(num.toString().includes('3')||num.toString().includes('6')||num.toString().includes('9')){
+    console.log(`짝!`)
+    }else{
+    console.log(`${num}`)
+    }
+  }
+}
+
+// includes 어쩔수 없지만 숫자를 문자열로 변경 하는것은 변수 선언
+function print(i){
+  for (let i=0; i<100; i++){
+    const num = i+1;
+    const str =num.toString();
+    if(str.includes('3')||str.includes('6')||str.includes('9')){
+    console.log(`짝!`)
+    }else{
+    console.log(`${num}`)
+    }
+  }
+}
+
+```
+
+### 문제 9 (과제)
 
 양의 정수를 입력받아, 다음과 같은 패턴의 출력을 하는 함수를 작성하세요.
 
