@@ -171,6 +171,24 @@ function print(input){
 
 2 이상의 자연수를 입력받아, 그 수가 소수인지 아닌지를 판별하는 함수를 작성하세요.
 
+```js
+function isPrime(input){
+    if (input<2){
+      throw new("2이상의 자연수를 입력하시오")
+    }else{
+      for (let i=0; i<input; i++){
+      const num = i+2;
+      if (input % num === 0){
+        return console.log('소수가 아님')
+      }
+      return console.log('소수')
+    }
+  }
+}
+
+
+isPrime(5);
+```
 ### 문제 8
 
 1부터 100까지의 수를 차례대로 출력하되, 자릿수에 3, 6, 9중 하나라도 포함되어 있으면 '짝!'을 대신 출력하는 프로그램을 작성하세요.
@@ -235,7 +253,17 @@ function print(i){
 * * * * *
 ```
 
-### 문제 10
+```js
+function startPrint(x){
+  for(i=0; i<x; i++){
+    const num = i + 1
+    console.log('* '.repeat(num));
+  }
+}
+startPrint(5) 
+```
+
+### 문제 10 (과제)
 
 양의 정수를 입력받아, 다음과 같은 패턴의 출력을 하는 함수를 작성하세요.
 
@@ -264,6 +292,17 @@ function print(i){
   * * *
    * *
     *
+```
+```js
+function startTreePrint(x){
+  for(i=0; i<x; i++){
+    console.log(' '.repeat(x - i)+'* '.repeat(i));
+  }
+    for(i=0; i<x; i++){
+     console.log(' '.repeat(i)+'* '.repeat(x - i));
+  }
+}
+startTreePrint(5)
 ```
 
 ### 문제 11
