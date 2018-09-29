@@ -257,7 +257,7 @@ function print(i){
 function startPrint(x){
   for(i=0; i<x; i++){
     const num = i + 1
-    console.log('* '.repeat(num));
+    console.log('*'.padEnd(2).repeat(num));
   }
 }
 startPrint(5) 
@@ -296,10 +296,10 @@ startPrint(5)
 ```js
 function startTreePrint(x){
   for(i=0; i<x; i++){
-    console.log(' '.repeat(x - i)+'* '.repeat(i));
+    console.log(' '.repeat(x - i)+'*'.padEnd(2).repeat(i));
   }
     for(i=0; i<x; i++){
-     console.log(' '.repeat(i)+'* '.repeat(x - i));
+     console.log(' '.repeat(i)+'*'.padEnd(2).repeat(x - i));
   }
 }
 startTreePrint(5)
