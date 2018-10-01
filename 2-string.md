@@ -53,12 +53,6 @@ leftPad('hello',8)
 
 문자열을 입력받아, 문자열 안에 들어있는 모든 모음(a, e, i, o, u)의 갯수를 반환하는 함수를 작성하세요.
 
-apple
-
-```
-'hello'.split('');
-```
-
 ```js
 function count(str){
   let num = 0;
@@ -90,6 +84,22 @@ countChar('tomato'); -> {t: 2, o: 2, m: 1, a: 1}
 
 문자열을 입력받아 그 문자열이 회문(palindrome)인지 판별하는 함수를 작성하세요. (회문이란, '토마토', 'never odd or even'과 같이 뒤에서부터 읽어도 똑같이 읽히는 문자열을 말합니다.)
 
+**선생님문제풀이**
+```js
+const isPalindrome = (input) => {
+  // 구지 input.length을 다 돌릴 필요가 없기 때문에 input.length/2-1으로 변경 
+
+  for (let i = 0; i < input.length; i++) {
+    const left = i;
+    const right = input.length - 1 - i;
+    if (input[left] !== input[right]) {
+     return false;
+    }
+  }
+  return true;
+}
+isPalindrome('토마토마토');
+```
 ### 문제 6
 
 문자열을 입력받아, 그 문자열의 모든 '부분 문자열'로 이루어진 배열을 반환하는 함수를 작성하세요.
@@ -109,13 +119,63 @@ subString('햄버거');
 removeDuplicates('tomato'); -> 'toma'
 removeDuplicates('bartender'); -> 'bartend'
 ```
+```js
+const removeDuplicates = (input) => {
+  let memory = ‘’;
+  for (let i = 0; i < input.length; i++){
+    if(memory.includes(input[i])) {
+      continue;
+    }else{
+      memory += input[i]
+    }
+  }
+  return memory
+}
 
+removeDuplicates(‘tomato’);
+```
 ### 문제 8
 
 이메일 주소를 입력받아, 아이디 부분을 별표(`*`)로 가린 새 문자열을 반환하는 함수를 작성하세요.
 
 - 루프로 먼저 풀어보세요.
 - `split` 메소드를 이용해서 풀어보세요.
+
+```js
+const hideId = (input) => {
+  const arr = input.split('@');
+  console.log(arr);
+  const id = '*'.repeat(arr[0].length);
+  const domain = arr[1];
+  console.log(id + '@' + domain);
+}
+
+hideId('seulxcxlcxcx@gmail.com')
+
+
+const removeId = (input){
+  let seen = false
+  let memory = ''
+  for (let i = 0; i < input.length; i++) {
+    //내가 지금 보고 있는 글자가 '@' 이면
+    //seen의 값을 true로 바꾼다.
+    if(input[i] === '@'){
+      seen = true;
+    }
+    
+    //seen이 true이면
+    if(seen){
+    //내가 지금 보고 있는 글자를 그대로 memory에 덧붙인다.
+      memory += input[i]
+    } else {
+    //아니면, 별표를 대신 덧붙인다.
+    memory += '*'
+    }
+  }
+  //변환한 결과를 반환한다. 
+  return memory;
+}
+```
 
 ### 문제 9
 
