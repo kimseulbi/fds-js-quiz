@@ -170,7 +170,7 @@ function print(input){
 ### 문제 7 (과제)
 
 2 이상의 자연수를 입력받아, 그 수가 소수인지 아닌지를 판별하는 함수를 작성하세요.
-
+**내답변**
 ```js
 function isPrime(input){
     if (input<2){
@@ -179,16 +179,31 @@ function isPrime(input){
       for (let i=0; i<input; i++){
       const num = i+2;
       if (input % num === 0){
-        return console.log('소수가 아님')
+        return '소수가 아님'
       }
-      return console.log('소수')
+      return '소수'
     }
   }
 }
 
+isPrime(5);
+```
+**선생님문제풀이**
+```js
+function isPrime(x){
+  // 소수: 1과 자기자신박에 약수가 없는 수
+  //-> 1과 자기자신이 아닌 약수가 하나라도 있으면 소수가 아니다.
+  for(let i = 2; i < x; i++){
+    if (x % i ===0) {
+      return false;
+    }
+  }
+  return true;
+}
 
 isPrime(5);
 ```
+
 ### 문제 8
 
 1부터 100까지의 수를 차례대로 출력하되, 자릿수에 3, 6, 9중 하나라도 포함되어 있으면 '짝!'을 대신 출력하는 프로그램을 작성하세요.
@@ -252,7 +267,7 @@ function print(i){
 * * * *
 * * * * *
 ```
-
+**내답변**
 ```js
 function startPrint(x){
   for(i=0; i<x; i++){
@@ -261,6 +276,33 @@ function startPrint(x){
   }
 }
 startPrint(5) 
+```
+**선생님문제풀이**
+```js
+function print(height){
+  for (let i = 0; i <height; i ++){
+    // 한 줄 출력
+    let stars = ''
+    for (let j = 0; j < i + 1; j++){
+      //  별 표 하나를 출력
+      stars += '* '
+    }
+    console.log(stars)
+  }
+}
+
+function print(height){
+  for (let i = 0; i <height; i ++){
+    const stars ='* '.repeat(i + 1)
+    console.log(stars)
+  }
+}
+
+function print(height){
+  for (let i = 0; i <height; i ++){
+    console.log('* '.repeat(i + 1))
+  }
+}
 ```
 
 ### 문제 10 (과제)
@@ -293,6 +335,7 @@ startPrint(5)
    * *
     *
 ```
+**내답변**
 ```js
 function startTreePrint(x){
   for(i=0; i<x; i++){
@@ -304,14 +347,51 @@ function startTreePrint(x){
 }
 startTreePrint(5)
 ```
+**선생님문제풀이**
+```js
+function printLine(height, i){
+ const n = i + 1;
+    const line = ' '.repeat(height - n) + '* '.repeat(n)
+    console.log(line)
+}
+
+function print(height){
+  for(let i = 0; i < height; i++){
+    printLine(height, i)
+  }
+  for(let i = height -2; i >= 0; i--){
+    printLine(height, i)
+  }
+}
+print(3)
+```
+|i|n번쨰|공백|*|
+|--|--|--|--|
+|0|1|2|1
+|1|2|1|2
+|2|3|0|3
 
 ### 문제 11
 
 두 수를 입력받아서, 두 수의 최대공약수를 반환하는 함수를 작성하세요. ([유클리드 호제법](https://ko.wikipedia.org/wiki/%EC%9C%A0%ED%81%B4%EB%A6%AC%EB%93%9C_%ED%98%B8%EC%A0%9C%EB%B2%95)을 참고하세요.)
 
+```js
+function euclidean (x,y){
+ if (y == 0) {
+   return x;
+ }return (y, x%y)
+}
+
+euclidean(1071,1029)
+```
+
 ### 문제 12
 
 세 수를 입력받아 큰 것부터 차례대로 출력하는 함수를 작성하세요.
+
+```js
+
+```
 
 ### 문제 13
 
