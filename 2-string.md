@@ -79,6 +79,9 @@ function count(str){
 ```
 countChar('tomato'); -> {t: 2, o: 2, m: 1, a: 1}
 ```
+```js
+
+```
 
 ### 문제 5
 
@@ -119,6 +122,7 @@ subString('햄버거');
 removeDuplicates('tomato'); -> 'toma'
 removeDuplicates('bartender'); -> 'bartend'
 ```
+**선생님문제풀이**
 ```js
 const removeDuplicates = (input) => {
   let memory = ‘’;
@@ -151,8 +155,9 @@ const hideId = (input) => {
 }
 
 hideId('seulxcxlcxcx@gmail.com')
-
-
+```
+**선생님문제풀이**
+```js
 const removeId = (input){
   let seen = false
   let memory = ''
@@ -175,25 +180,135 @@ const removeId = (input){
   //변환한 결과를 반환한다. 
   return memory;
 }
+
+const removeId2 = (input) => {
+  // '@'을 기준으로 쪼갠 후
+  const splitted = input.split('@')
+  // id 부분과 같은 길이를 갖는 별표 문자열을 만든다.
+  const stars = '*'.repeat(splitted[0].length)
+  // 별표를 @, 도메인 부분과 이어붙인 후 반환한다.
+  return stars + '@' + splitted[1]
+}
 ```
 
 ### 문제 9
 
 문자열을 입력받아, 대문자는 소문자로, 소문자는 대문자로 바꾼 결과를 반환하는 함수를 작성하세요.
+**내답변**
+```js 
+function swapCase(input) {
+  let text = ''
+  for (let i = 0; i < input.length; i++) {
+    if (input[i] !== input[i].toLowerCase()) {
+      // 소문자로 
+      text += input[i].toLowerCase();
+    } else {
+      // 대문자로 변경하여라
+      text += input[i].toUpperCase();
+    }
+  }
+  // 반환값
+  return text;
+}
+swapCase('JaveScript')
+```
+**선생님문제풀이**
+```js
+// 배열을 사용하지 않고, 루프를 사용해서 풀기
+function swapCase(input) {
+  let memory = ''
+  for (let i = 0; i < input.length; i++) {
+    if (input[i].toUpperCase() === input[i]) {
+      memory += input[i].toLowerCase()
+    } else {
+      memory += input[i].toUpperCase()
+    }
+  }
+  return memory
+}
 
+swapCase('JavaScript')
+```
+```js
+// 배열 메소드를 사용해서 풀기
+//Array.form 배열 생성 문자열 하나씩 요소
+const swapCase = input => Array.from(input)
+// map 각요소에 함수를 적용 새로운 배열을 만듬
+// 삼항 연산자로 true 이면 앞 false이면 뒤 
+// join으로 배열을 문자열로 
+  .map(c => c.toUpperCase() === c ? c.toLowerCase() : c.toUpperCase()).join('')
+
+ swapCase('JaveScript')
+```
 ### 문제 10
 
 문자열을 입력받아, 각 단어의 첫 글자를 대문자로 바꾼 결과를 반환하는 함수를 작성하세요. (문자열에 개행이 없다고 가정합니다.)
+**내답변**
+```js
+function spelling(input) {
+  const text = input.split(' ');
+  let x = ''
+  console.log(text);
+  console.log(text.length);
+  for (let i = 0; i < text.length; i++) {
+    x += text[i][0].toUpperCase();
+    console.log(x);
+    for (let j = 1; j < text[i].length; j++) {
+      x += text[i][j].toLowerCase();
+      // [i] 숫자가 다르면 ''를 하시오 
+    }
+  }
+  // 반환값
+  return x
+}
+spelling('i am hungry')
+```
+**선생님문제풀이**
+```js
+// 배열을 사용하지 않고, 루프를 사용해서 풀기
+function capitalize(input) {
+  let seenBlank = true
+  let memory = ''
 
-### 문제 11
+  for (let i = 0; i < input.length; i++) {
+    if (seenBlank) {
+      memory += input[i].toUpperCase()
+    } else {
+      memory += input[i]
+    }
+
+    if (input[i] === ' ') {
+      seenBlank = true
+    } else {
+      seenBlank = false
+    }
+  }
+
+  return memory
+}
+
+capitalize('i am hungry')
+```
+```js
+// 배열 메소드를 사용해서 풀기
+// split 문자열을 특정 문자를 기준으로 잘라 새 배열 생성
+const capitalize2 = input => input.split(' ')
+// map으로 새로운 배열로 word 배열 생성 
+// slice 인덱스 범위 지정으로 새로운 배열 
+// 인덱스 0 부터 1 사이의 요소들을 대문자 변환 하여 배열 생성 
+.map(word => word.slice(0, 1).toUpperCase() + word.slice(1)).join(' ')
+
+capitalize2('i am hungry')
+```
+### 문제 11 (과제)
 
 문자열을 입력받아, 문자열 안에 들어있는 단어 중 가장 긴 단어를 반환하는 함수를 작성하세요. (문자열에 개행이 없다고 가정합니다.)
 
-### 문제 12
+### 문제 12 (과제)
 
 문자열 `s`과 자연수 `n`을 입력받아, `s`의 첫 `n`개의 문자만으로 이루어진 새 문자열을 반환하는 함수를 작성하세요.
 
-### 문제 13
+### 문제 13 (과제)
 
 Camel case의 문자열을 입력받아, snake case로 바꾼 새 문자열을 반환하는 함수를 작성하세요.
 
@@ -201,7 +316,7 @@ Camel case의 문자열을 입력받아, snake case로 바꾼 새 문자열을 �
 
 Snake case의 문자열을 입력받아, camel case로 바꾼 새 문자열을 반환하는 함수를 작성하세요.
 
-### 문제 15
+### 문제 15 (과제)
 
 `String.prototype.split`과 똑같이 동작하는 함수를 작성하세요.
 
