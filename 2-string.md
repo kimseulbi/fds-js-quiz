@@ -304,14 +304,52 @@ capitalize2('i am hungry')
 
 문자열을 입력받아, 문자열 안에 들어있는 단어 중 가장 긴 단어를 반환하는 함수를 작성하세요. (문자열에 개행이 없다고 가정합니다.)
 
+```js
+function longWord(input){
+  const arr = input.split(' ');
+  console.log(arr)
+  let maxIndex = 0;
+  for (let i=0; i < arr.length; i++){
+    if (arr[maxIndex].length < arr[i].length){
+      maxIndex = i;
+    }
+  }
+  return arr[maxIndex];
+}
+
+longWord('i am hungry')
+```
+
 ### 문제 12 (과제)
 
 문자열 `s`과 자연수 `n`을 입력받아, `s`의 첫 `n`개의 문자만으로 이루어진 새 문자열을 반환하는 함수를 작성하세요.
+
+```js
+const print = (str,num) => Array.from(str)
+.slice(0,num).join('')
+
+print ('javeScript',4)
+```
 
 ### 문제 13 (과제)
 
 Camel case의 문자열을 입력받아, snake case로 바꾼 새 문자열을 반환하는 함수를 작성하세요.
 
+```js
+function change (input){
+  let memory = '';
+  for(i=0; i<input.length; i++){
+    if (input[i] === input[i].toUpperCase()){
+      // 대문자 앞에 _를 넣어라 
+      memory += '_'+ input[i].toLowerCase()
+    } else {
+      memory += input[i]
+    }
+  }
+  return memory;
+}
+change('javeScript')
+```
 ### 문제 14
 
 Snake case의 문자열을 입력받아, camel case로 바꾼 새 문자열을 반환하는 함수를 작성하세요.
@@ -325,6 +363,26 @@ Snake case의 문자열을 입력받아, camel case로 바꾼 새 문자열을 �
 split('Hello World'); -> ['Hello World']
 split('Hello World', ' '); -> ['Hello', 'World']
 split('let,const,var', ',') -> ['let', 'const', 'var']
+```
+
+```js
+const split = (str,cut) => {
+  const arr = [];
+  let index = 0;
+  for (let i = 0; i< str.length; i++){
+    if (str[i] === cut){
+      arr.push(str.slice(index,i))
+      index = i + 1;
+    }else if (i === str.length - 1){
+      arr.push(str.slice(index, str.length))
+    }
+  }
+  return arr;
+} 
+
+split('Hello World');
+split('Hello World', ' ');
+split('let,const,var', ','); 
 ```
 
 ### 문제 16
