@@ -303,7 +303,7 @@ capitalize2('i am hungry')
 ### 문제 11 (과제)
 
 문자열을 입력받아, 문자열 안에 들어있는 단어 중 가장 긴 단어를 반환하는 함수를 작성하세요. (문자열에 개행이 없다고 가정합니다.)
-
+**내답변**
 ```js
 function longWord(input){
   const arr = input.split(' ');
@@ -319,22 +319,78 @@ function longWord(input){
 
 longWord('i am hungry')
 ```
+**선생님문제풀이**
+```js
+//아이디어: 한글자씩 보면서, 지금까지 봤던 단어중에 제일 긴단어를 기억해둔다. 
+function longestWord(input) {
+  let longest = ''// 지금까지 봤던 단어 중에 제일 긴단어
+  let current = '' // 내가 지금보고 있는 단어
+  for(let i = 0; i <input.length; i++) {
+    //  내가 지금 보고 있는 글자가 공백이 아니면
+    if (input[i] !== ' '){
+      current += input[i]
+      if (current.length >= longest.length){
+        longest = current
+      }
+    } else {
+      // 내가 지금 보고 있는 글자가 골백이면 
+      // current를 처음부터 다시 시작
+      current = ''
+    }
+  }
+  return longest
+}
+
+longestWord('hello fun javascript')
+```
+```js
+// 실무에서는 루프 보다는 배열을 더 많이 활용함 
+// 배열 메소드 사용한 버전
+function longestWord(input){
+  const splitted = input.split(' ')
+  // 작은 단위는 변수로 x,y를 사용 하지만 의미에 맞게 사용 하는것 좋다
+  splitted.sort((x,y)=>y.length -x.length)
+  return splitted[0]
+}
+longestWord('hello fun javascript')
+```
 
 ### 문제 12 (과제)
 
 문자열 `s`과 자연수 `n`을 입력받아, `s`의 첫 `n`개의 문자만으로 이루어진 새 문자열을 반환하는 함수를 작성하세요.
-
+**내답변**
 ```js
 const print = (str,num) => Array.from(str)
 .slice(0,num).join('')
 
 print ('javeScript',4)
 ```
+**선생님문제풀이**
+```js
+function firstLetters(s,n) {
+  // s.length가 n보다 클 경우
+  if (s.length < n){
+    return s;
+  }
+  // s.length가 n보다 작을경우
+  let memory = ''
+  for (let i = 0; i < s.length; i++){
+    memory += s[i]
+    if (memory.length === n) {
+      return memory
+    }
+  }
+}
+
+firstLetters ('javeScript',15)
+```
 
 ### 문제 13 (과제)
 
 Camel case의 문자열을 입력받아, snake case로 바꾼 새 문자열을 반환하는 함수를 작성하세요.
 
+배열을 순회할때 순회중인 배열을 바꾸면 안된다.
+**내답변**
 ```js
 function change (input){
   let memory = '';
@@ -350,6 +406,24 @@ function change (input){
 }
 change('javeScript')
 ```
+**선생님문제풀이**
+```js
+경우 바로 앞에 밑줄을 쳐준다.
+function toSnakeCase(input) {
+  let memory = ''
+  for (let i=0; i<input.length; i++){
+    // 만약, 첫글자가 아닌 대문자를 만났을 경우
+    if (i !== 0 && (input[i].toUpperCase() === input[i])){
+      memory += '_'
+    }
+    memory += input[i].toLowerCase()
+  }
+  return memory
+}
+
+toSnakeCase('JavaScript')
+```
+
 ### 문제 14
 
 Snake case의 문자열을 입력받아, camel case로 바꾼 새 문자열을 반환하는 함수를 작성하세요.
@@ -364,7 +438,7 @@ split('Hello World'); -> ['Hello World']
 split('Hello World', ' '); -> ['Hello', 'World']
 split('let,const,var', ',') -> ['let', 'const', 'var']
 ```
-
+**내답변**
 ```js
 const split = (str,cut) => {
   const arr = [];
@@ -382,6 +456,27 @@ const split = (str,cut) => {
 
 split('Hello World');
 split('Hello World', ' ');
+split('let,const,var', ','); 
+```
+**선생님문제풀이**
+```js
+function split (input, sep){
+  //'seoarator'
+  //현재 보고 있는 단어 
+  let memory = ''
+  let arr = []
+  for (let i = 0; i <input.length; i++) {
+    if (input[i] !== sep) {
+      memory += input[i]
+    } else {
+      arr.push(memory)
+      memory = ''
+    }
+  }
+  arr.push(memory)
+  return arr
+}
+
 split('let,const,var', ','); 
 ```
 
