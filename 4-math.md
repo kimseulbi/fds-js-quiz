@@ -2,9 +2,25 @@
 
 양수를 입력받아 이 수를 반지름으로 하는 원의 넓이를 반환하는 함수를 작성하세요.
 
+**내답변**
+```js
+// 원의반지름 * 원의 반지름 * 원주율
+const area = (x) => {
+  return x ** 2 * Math.PI;
+} 
+area(4)
+```
 ### 문제 2
 
 두 정수 `min`, `max` 를 입력받아, `min` 이상 `max` 미만인 임의의 정수를 반환하는 함수를 작성하세요.
+
+**내답변**
+```js
+function randomIntegervalue (min,max){
+return  Math.floor(Math.random() * (max-min)) + min
+}
+randomIntegervalue(4,6)
+```
 
 ### 문제 3
 
@@ -16,17 +32,65 @@ ceilBy5(32); -> 35
 ceilBy5(37); -> 40
 ```
 
+**내답변**
+```js
+function ceilBy5(num) {
+  return Math.ceil(num/5) * 5
+}
+ceilBy5(32)
+ceilBy5(37)
+```
+
 ### 문제 4
 
 배열을 입력받아, 요소들의 순서를 뒤섞은 새 배열을 반환하는 함수를 작성하세요.
 
+**내답변**
+```js
+function randomArr(arr) {
+  //배열 전체 복사
+  let newArr = arr.slice();
+  for (let item of newArr) {
+    newArr.sort(() => Math.floor(Math.random() * newArr.length));
+  }
+  return newArr;
+}
+
+randomArr([1, 2, 3])
+```
 ### 문제 5
 
 임의의 HTML 색상 코드를 반환하는 함수를 작성하세요.
 
+**내답변**
+```js
+function htmlColorCode (color){
+  const numberRange = '0123456789abcdef';
+  let colorCode =''; 
+  for(let i=0; i<6; i++){
+    colorCode += numberRange[Math.floor(Math.random() * numberRange.length)]
+  }
+return `#${colorCode}`
+}
+htmlColorCode();
+```
+
 ### 문제 6
 
 양수를 입력받아, 그 수만큼의 길이를 갖는 임의의 문자열을 반환하는 함수를 작성하세요.
+
+**내답변**
+```js
+function randomLength (num){
+  const str = 'abcdefghijklmnopqrstuvwxyz';
+  let randomStr = '';
+  for(let i = 0; i < num; i++ ){
+    randomStr += str[Math.floor(Math.random() * str.length)]
+  }
+  return randomStr;
+}
+randomLength(4);
+```
 
 ### 문제 7
 
